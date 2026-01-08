@@ -11,42 +11,59 @@ Chào mừng bạn đến với chương trình đào tạo Intern! Tài liệu 
    - Giới thiệu về công ty
    - Tool và equipments
    - Git Flow Process
-   - JSCore
-   - JavaScript fundamentals
+   - Workspace Setup (Node.js, npm, ESLint, Prettier)
 
-2. [HTML, CSS](./modules/02-html-css.md)
+2. [JavaScript Basics](./modules/02-javascript-basics.md)
+
+   - Variables, Data Types, Operators
+   - Control Flow & Loops
+   - Functions & Scope
+   - Arrays & Objects
+   - DOM Manipulation
+   - Async Basics (Callbacks, Promises, Async/Await)
+
+3. [JavaScript Deep Dive](./modules/03-javascript-deep-dive.md)
+
+   - Scope & Closures
+   - this & Object Prototypes
+   - Types & Coercion
+   - Async & Performance
+   - ES6+ Features
+
+4. [HTML, CSS](./modules/04-html-css.md)
 
    - Flexbox, Grid box, Layout
    - CSS specificity, CSS responsive
    - Semantic HTML
 
-3. [TypeScript](./modules/03-typescript.md)
+5. [TypeScript](./modules/05-typescript.md)
 
    - TypeScript fundamentals
    - Advanced TypeScript concepts
    - TypeScript vs JavaScript
 
-4. [ReactJS + Restful API](./modules/04-reactjs-restful-api.md)
+6. [ReactJS + Restful API](./modules/06-reactjs-restful-api.md)
 
    - RESTful API concepts
    - ReactJS fundamentals
    - React Hooks (useState, useEffect)
    - Virtual DOM & React Router
 
-5. [GraphQL](./modules/05-graphql.md)
+7. [GraphQL](./modules/07-graphql.md)
 
    - GraphQL concepts
    - GraphQL vs RESTful API
    - Advanced GraphQL (Caching, Fragment)
 
-6. [Clean Code and Design Pattern](./modules/06-clean-code-design-pattern.md)
+8. [Clean Code and Design Pattern](./modules/08-clean-code-design-pattern.md)
+
    - Naming conventions
    - Code structure
    - Design patterns (Composite, Prototype, Flux)
 
 ## Cách sử dụng
 
-Mỗi module được thiết kế để học tuần tự từ Module 1 đến Module 6. Hãy đảm bảo bạn hiểu rõ các khái niệm trong module trước khi chuyển sang module tiếp theo.
+Mỗi module được thiết kế để học tuần tự từ Module 1 đến Module 8. Hãy đảm bảo bạn hiểu rõ các khái niệm trong module trước khi chuyển sang module tiếp theo.
 
 ## Yêu cầu
 

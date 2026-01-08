@@ -1,4 +1,4 @@
-# Module 5: GraphQL
+# Module 7: GraphQL
 
 ## Mục tiêu module
 

@@ -2,7 +2,7 @@
 
 ## Module Objectives
 
-This module helps you get familiar with the work environment, necessary tools, and foundational JavaScript knowledge.
+This module helps you get familiar with the work environment, necessary tools, and Git workflow.
 
 ---
 
@@ -56,6 +56,8 @@ brew install node  # macOS
 - GitLens
 - Auto Rename Tag
 - Live Server
+- JavaScript (ES6) code snippets
+- Path Intellisense
 
 ---
 
@@ -227,693 +229,263 @@ git rebase -i HEAD~3
 - **Merge**: When you need to preserve history, working in team
 - **Rebase**: When you want clean history, working on local branch
 
+### 3.6 Conventional Commits
+
+#### Concept
+
+Conventional Commits is a specification for writing standardized commit messages to create clear and readable history.
+
+**Format:**
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+**Common types:**
+
+| Type       | Description                                        |
+| ---------- | -------------------------------------------------- |
+| `feat`     | Add new feature                                    |
+| `fix`      | Fix bug                                            |
+| `docs`     | Change documentation                               |
+| `style`    | Formatting, no logic change                        |
+| `refactor` | Refactor code without adding feature or fixing bug |
+| `test`     | Add or modify tests                                |
+| `chore`    | Change build process, tools                        |
+
+#### Examples
+
+```bash
+# New feature
+git commit -m "feat: add user authentication"
+git commit -m "feat(auth): implement JWT token validation"
+
+# Fix bug
+git commit -m "fix: resolve login redirect issue"
+git commit -m "fix(api): handle null response from server"
+
+# Documentation
+git commit -m "docs: update README with installation steps"
+
+# Refactor
+git commit -m "refactor: simplify user validation logic"
+
+# Breaking change
+git commit -m "feat!: change authentication API"
+git commit -m "feat(api)!: rename endpoint from /users to /members"
+```
+
+### 3.7 Handling Merge Conflicts
+
+#### Concept
+
+Merge conflict occurs when Git cannot automatically merge changes from different branches.
+
+#### Examples
+
+```bash
+# When merge has conflict
+git merge feature/login
+# Auto-merging src/auth.js
+# CONFLICT (content): Merge conflict in src/auth.js
+
+# View files with conflict
+git status
+
+# Conflict file will have this format:
+<<<<<<< HEAD
+// Code from current branch
+const config = { timeout: 3000 };
+=======
+// Code from merging branch
+const config = { timeout: 5000 };
+>>>>>>> feature/login
+
+# After resolving conflict:
+git add src/auth.js
+git commit -m "fix: resolve merge conflict in auth.js"
+```
+
 ---
 
-## 4. JSCore
+## 4. Workspace Setup
 
-### Concept
+### 4.1 Node.js & npm
 
-JSCore are the foundational concepts of JavaScript:
+#### Concept
 
-#### 4.1 Types & Grammar
-
-**Primitive Types:**
-
-- `string`
-- `number`
-- `boolean`
-- `undefined`
-- `null`
-- `symbol` (ES6)
-- `bigint` (ES2020)
-
-**Reference Types:**
-
-- `object`
-- `array`
-- `function`
+Node.js is a runtime environment for JavaScript. npm (Node Package Manager) is used to manage packages/dependencies.
 
 #### Examples
 
-```javascript
-// Primitive types
-let name = "John"; // string
-let age = 25; // number
-let isStudent = true; // boolean
-let job; // undefined
-let salary = null; // null
-let id = Symbol("id"); // symbol
-let bigNumber = 123456789n; // bigint
+```bash
+# Check version
+node --version
+npm --version
 
-// Reference types
-let person = {
-  // object
-  name: "John",
-  age: 25,
-};
-let numbers = [1, 2, 3]; // array
-let greet = function () {}; // function
+# Initialize new project
+npm init -y
 
-// Type checking
-console.log(typeof name); // "string"
-console.log(typeof age); // "number"
-console.log(typeof isStudent); // "boolean"
-console.log(typeof job); // "undefined"
-console.log(typeof salary); // "object" (quirk!)
-console.log(typeof person); // "object"
-console.log(Array.isArray(numbers)); // true
+# Install dependencies
+npm install react react-dom
+npm install -D typescript eslint
+
+# Install global package
+npm install -g create-react-app
+
+# Run scripts
+npm run dev
+npm run build
+npm test
 ```
 
-#### 4.2 Variables, if/else, operators, boolean logic
+### 4.2 package.json
+
+#### Concept
+
+The `package.json` file contains project information and configuration.
 
 #### Examples
 
-```javascript
-// Variables
-var oldWay = "var is function-scoped";
-let modern = "let is block-scoped";
-const constant = "const cannot be reassigned";
-
-// if/else
-let score = 85;
-if (score >= 90) {
-  console.log("Excellent");
-} else if (score >= 70) {
-  console.log("Good");
-} else {
-  console.log("Need improvement");
-}
-
-// Operators
-let sum = 5 + 3; // Addition
-let diff = 10 - 4; // Subtraction
-let product = 4 * 5; // Multiplication
-let quotient = 20 / 4; // Division
-let remainder = 10 % 3; // Modulus
-let power = 2 ** 3; // Exponentiation (ES2016)
-
-// Comparison operators
-console.log(5 == "5"); // true (loose equality)
-console.log(5 === "5"); // false (strict equality)
-console.log(5 != "5"); // false
-console.log(5 !== "5"); // true
-
-// Boolean logic
-let isAdult = age >= 18;
-let hasLicense = true;
-let canDrive = isAdult && hasLicense; // AND
-let canEnter = isAdult || hasTicket; // OR
-let isNotStudent = !isStudent; // NOT
-```
-
-#### 4.3 Functions, Arrays, Objects, Loops, Strings
-
-#### Examples
-
-```javascript
-// FUNCTIONS
-// Function declaration
-function greet(name) {
-  return `Hello, ${name}!`;
-}
-
-// Function expression
-const add = function (a, b) {
-  return a + b;
-};
-
-// Arrow function (ES6)
-const multiply = (a, b) => a * b;
-
-// ARRAYS
-let fruits = ["apple", "banana", "orange"];
-
-// Array methods
-fruits.push("grape"); // Add to end
-fruits.pop(); // Remove from end
-fruits.unshift("mango"); // Add to start
-fruits.shift(); // Remove from start
-
-// Array iteration
-fruits.forEach((fruit) => console.log(fruit));
-let upperFruits = fruits.map((fruit) => fruit.toUpperCase());
-let longFruits = fruits.filter((fruit) => fruit.length > 5);
-let totalLength = fruits.reduce((sum, fruit) => sum + fruit.length, 0);
-
-// OBJECTS
-let student = {
-  name: "Alice",
-  age: 20,
-  grades: [85, 90, 92],
-  getAverage: function () {
-    return this.grades.reduce((a, b) => a + b) / this.grades.length;
+```json
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "My awesome project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "jest",
+    "lint": "eslint src/"
   },
-};
-
-// Access properties
-console.log(student.name); // Dot notation
-console.log(student["age"]); // Bracket notation
-console.log(student.getAverage()); // Call method
-
-// LOOPS
-// for loop
-for (let i = 0; i < 5; i++) {
-  console.log(i);
-}
-
-// for...of (iterate values)
-for (let fruit of fruits) {
-  console.log(fruit);
-}
-
-// for...in (iterate keys)
-for (let key in student) {
-  console.log(`${key}: ${student[key]}`);
-}
-
-// while loop
-let count = 0;
-while (count < 5) {
-  console.log(count);
-  count++;
-}
-
-// STRINGS
-let message = "Hello, World!";
-console.log(message.length); // 13
-console.log(message.toUpperCase()); // "HELLO, WORLD!"
-console.log(message.toLowerCase()); // "hello, world!"
-console.log(message.includes("World")); // true
-console.log(message.split(", ")); // ["Hello", "World!"]
-console.log(message.slice(0, 5)); // "Hello"
-console.log(message.replace("World", "JavaScript")); // "Hello, JavaScript!"
-
-// Template literals (ES6)
-let name = "Alice";
-let greeting = `Hello, ${name}! You are ${age} years old.`;
-```
-
----
-
-## 5. Scope & Closures
-
-### 5.1 Scope
-
-#### Concept
-
-Scope determines the accessibility of variables in JavaScript.
-
-**Types of scope:**
-
-- **Global Scope**: Variable accessible everywhere
-- **Function Scope**: Variable accessible only within function (`var`)
-- **Block Scope**: Variable accessible only within block `{}` (`let`, `const`)
-- **Lexical Scope**: Function can access variables from outer function
-- **Dynamic Scope**: JavaScript doesn't have dynamic scope
-
-#### Examples
-
-```javascript
-// Global scope
-let globalVar = "I'm global";
-
-function outerFunction() {
-  // Function scope
-  var functionVar = "I'm in function";
-
-  if (true) {
-    // Block scope
-    let blockVar = "I'm in block";
-    const blockConst = "I'm also in block";
-    var notBlockScoped = "var ignores block";
-
-    console.log(globalVar); // ✓ Can access
-    console.log(functionVar); // ✓ Can access
-    console.log(blockVar); // ✓ Can access
-  }
-
-  console.log(globalVar); // ✓ Can access
-  console.log(functionVar); // ✓ Can access
-  // console.log(blockVar);      // ✗ ReferenceError
-  console.log(notBlockScoped); // ✓ Can access (var!)
-}
-
-// console.log(functionVar);     // ✗ ReferenceError
-
-// Lexical Scope
-function outer() {
-  let outerVar = "outer";
-
-  function inner() {
-    let innerVar = "inner";
-    console.log(outerVar); // ✓ Can access parent scope
-    console.log(innerVar); // ✓ Can access own scope
-  }
-
-  inner();
-  // console.log(innerVar); // ✗ Cannot access child scope
-}
-```
-
-### 5.2 Closures
-
-#### Concept
-
-Closure is a function that can access variables from outer scope even when the outer function has returned.
-
-**Characteristics:**
-
-- Inner function can "remember" and access outer function's scope
-- Creates private variables
-- Used in callbacks, event handlers
-
-#### Examples
-
-```javascript
-// Basic closure
-function createCounter() {
-  let count = 0; // Private variable
-
-  return {
-    increment: function () {
-      count++;
-      return count;
-    },
-    decrement: function () {
-      count--;
-      return count;
-    },
-    getCount: function () {
-      return count;
-    },
-  };
-}
-
-const counter = createCounter();
-console.log(counter.increment()); // 1
-console.log(counter.increment()); // 2
-console.log(counter.getCount()); // 2
-console.log(counter.count); // undefined (private!)
-
-// Closure in callbacks
-function setupButton() {
-  let clickCount = 0;
-
-  document.getElementById("btn").addEventListener("click", function () {
-    clickCount++;
-    console.log(`Button clicked ${clickCount} times`);
-  });
-}
-
-// Closure for data privacy
-function createBankAccount(initialBalance) {
-  let balance = initialBalance;
-
-  return {
-    deposit: function (amount) {
-      if (amount > 0) {
-        balance += amount;
-        return `Deposited ${amount}. New balance: ${balance}`;
-      }
-    },
-    withdraw: function (amount) {
-      if (amount > 0 && amount <= balance) {
-        balance -= amount;
-        return `Withdrew ${amount}. New balance: ${balance}`;
-      }
-      return "Insufficient funds";
-    },
-    getBalance: function () {
-      return balance;
-    },
-  };
-}
-
-const myAccount = createBankAccount(1000);
-console.log(myAccount.deposit(500)); // "Deposited 500. New balance: 1500"
-console.log(myAccount.withdraw(200)); // "Withdrew 200. New balance: 1300"
-console.log(myAccount.getBalance()); // 1300
-// console.log(myAccount.balance);      // undefined (cannot access directly!)
-```
-
----
-
-## 6. This and Object Prototypes
-
-### 6.1 Modular (Import, Export)
-
-#### Concept
-
-ES6 Modules allow splitting code into separate files with import/export.
-
-**Export types:**
-
-- Named Export: `export { name, age }`
-- Default Export: `export default Component`
-
-#### Examples
-
-```javascript
-// utils.js - Named exports
-export const PI = 3.14159;
-
-export function add(a, b) {
-  return a + b;
-}
-
-export class Calculator {
-  multiply(a, b) {
-    return a * b;
-  }
-}
-
-// math.js - Default export
-export default function subtract(a, b) {
-  return a - b;
-}
-
-// app.js - Import
-import subtract from "./math.js"; // Default import
-import { PI, add, Calculator } from "./utils.js"; // Named imports
-import * as Utils from "./utils.js"; // Import all
-
-console.log(PI); // 3.14159
-console.log(add(5, 3)); // 8
-console.log(subtract(10, 4)); // 6
-
-const calc = new Calculator();
-console.log(calc.multiply(4, 5)); // 20
-
-console.log(Utils.PI); // 3.14159
-console.log(Utils.add(2, 3)); // 5
-
-// Rename imports
-import { add as sum } from "./utils.js";
-console.log(sum(1, 2)); // 3
-```
-
-### 6.2 Async: callback, promise, async-await
-
-#### Concept
-
-JavaScript is an asynchronous language to handle time-consuming tasks.
-
-**3 ways to handle async:**
-
-1. **Callback**: Function passed as parameter
-2. **Promise**: Object representing future result
-3. **Async/Await**: Syntax sugar for Promise, more readable
-
-#### Examples
-
-```javascript
-// 1. CALLBACK
-function fetchDataCallback(callback) {
-  setTimeout(() => {
-    const data = { id: 1, name: "John" };
-    callback(data);
-  }, 1000);
-}
-
-fetchDataCallback((data) => {
-  console.log("Data received:", data);
-});
-
-// Callback hell (Pyramid of Doom)
-doSomething(function (result1) {
-  doSomethingElse(result1, function (result2) {
-    doAnotherThing(result2, function (result3) {
-      console.log("Final result:", result3);
-    });
-  });
-});
-
-// 2. PROMISE
-function fetchDataPromise() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const success = true;
-      if (success) {
-        resolve({ id: 1, name: "John" });
-      } else {
-        reject(new Error("Failed to fetch data"));
-      }
-    }, 1000);
-  });
-}
-
-// Using Promise
-fetchDataPromise()
-  .then((data) => {
-    console.log("Data:", data);
-    return data.id;
-  })
-  .then((id) => {
-    console.log("ID:", id);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  })
-  .finally(() => {
-    console.log("Cleanup");
-  });
-
-// Promise chaining (better than callback hell)
-doSomething()
-  .then((result1) => doSomethingElse(result1))
-  .then((result2) => doAnotherThing(result2))
-  .then((result3) => console.log("Final result:", result3))
-  .catch((error) => console.error(error));
-
-// 3. ASYNC/AWAIT
-async function fetchDataAsync() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ id: 1, name: "John" });
-    }, 1000);
-  });
-}
-
-// Using async/await
-async function getUserData() {
-  try {
-    console.log("Fetching data...");
-    const data = await fetchDataAsync();
-    console.log("Data:", data);
-
-    const id = data.id;
-    console.log("ID:", id);
-
-    return data;
-  } catch (error) {
-    console.error("Error:", error);
-  } finally {
-    console.log("Cleanup");
-  }
-}
-
-getUserData();
-
-// Async/await with multiple promises
-async function fetchMultipleData() {
-  try {
-    // Sequential (slow - 3 seconds total)
-    const user = await fetchUser();
-    const posts = await fetchPosts();
-    const comments = await fetchComments();
-
-    // Parallel (fast - 1 second total)
-    const [user2, posts2, comments2] = await Promise.all([
-      fetchUser(),
-      fetchPosts(),
-      fetchComments(),
-    ]);
-
-    console.log(user2, posts2, comments2);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Real-world example: API call
-async function fetchUserFromAPI(userId) {
-  try {
-    const response = await fetch(`https://api.example.com/users/${userId}`);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Failed to fetch user:", error);
-    throw error;
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
   }
 }
 ```
 
-### 6.3 Async Advance: event loop, callback queue, calltask
+### 4.3 ESLint & Prettier
 
 #### Concept
 
-JavaScript runtime operates with these mechanisms:
-
-- **Call Stack**: Where functions execute (LIFO - Last In First Out)
-- **Event Loop**: Checks call stack and callback queue
-- **Callback Queue (Task Queue)**: Queue for callbacks (setTimeout, events)
-- **Microtask Queue**: Higher priority queue (Promise, async/await)
-
-**Execution order:**
-
-1. Synchronous code (Call Stack)
-2. Microtasks (Promise callbacks)
-3. Macrotasks (setTimeout, setInterval)
+- **ESLint**: Tool for detecting errors and ensuring code quality
+- **Prettier**: Automatic code formatting tool
 
 #### Examples
 
-```javascript
-// Event Loop Demo
-console.log("1: Start");
+```bash
+# Installation
+npm install -D eslint prettier eslint-config-prettier
 
-setTimeout(() => {
-  console.log("2: setTimeout (Macrotask)");
-}, 0);
+# Create config files
+npx eslint --init
+```
 
-Promise.resolve().then(() => {
-  console.log("3: Promise (Microtask)");
-});
+**.eslintrc.json**:
 
-console.log("4: End");
-
-// Output:
-// 1: Start
-// 4: End
-// 3: Promise (Microtask)
-// 2: setTimeout (Macrotask)
-
-// Complex example
-console.log("Script start");
-
-setTimeout(() => {
-  console.log("setTimeout 1");
-  Promise.resolve().then(() => {
-    console.log("Promise in setTimeout");
-  });
-}, 0);
-
-Promise.resolve()
-  .then(() => {
-    console.log("Promise 1");
-    setTimeout(() => {
-      console.log("setTimeout in Promise");
-    }, 0);
-  })
-  .then(() => {
-    console.log("Promise 2");
-  });
-
-console.log("Script end");
-
-// Output:
-// Script start
-// Script end
-// Promise 1
-// Promise 2
-// setTimeout 1
-// Promise in setTimeout
-// setTimeout in Promise
-
-// Microtask vs Macrotask
-async function asyncTask() {
-  console.log("Async function start");
-
-  await Promise.resolve();
-  console.log("After await (Microtask)");
+```json
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "warn"
+  }
 }
+```
 
-setTimeout(() => console.log("setTimeout (Macrotask)"), 0);
-asyncTask();
-console.log("Synchronous");
+**.prettierrc**:
 
-// Output:
-// Async function start
-// Synchronous
-// After await (Microtask)
-// setTimeout (Macrotask)
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "printWidth": 80
+}
 ```
 
 ---
 
 ## Practice Exercises
 
-### Exercise 1: Git Flow
+### Exercise 1: Setup environment
 
-1. Clone a repository
-2. Create a feature branch
-3. Commit changes with conventional commit message
-4. Create a Pull Request
+1. Install VS Code and necessary extensions
+2. Install Git and configure user name/email
+3. Install Node.js and npm
+4. Verify all installations
 
-### Exercise 2: JavaScript Fundamentals
-
-```javascript
-// Write function to sum even numbers in array
-function sumEvenNumbers(arr) {
-  // Your code here
-}
-
-console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6])); // Expected: 12
-
-// Write function to find user by id
-const users = [
-  { id: 1, name: "Alice", age: 25 },
-  { id: 2, name: "Bob", age: 30 },
-  { id: 3, name: "Charlie", age: 35 },
-];
-
-function findUserById(users, id) {
-  // Your code here
-}
-
-console.log(findUserById(users, 2)); // Expected: { id: 2, name: "Bob", age: 30 }
+```bash
+# Verify installations
+code --version
+git --version
+node --version
+npm --version
 ```
 
-### Exercise 3: Closure
+### Exercise 2: Git Flow
 
-```javascript
-// Create function that generates unique IDs
-function createIdGenerator() {
-  // Your code here
-}
+1. Fork a repository on GitHub
+2. Clone repository to local
+3. Create a new feature branch
+4. Add a new file and commit with conventional commit message
+5. Push to remote and create Pull Request
 
-const getId = createIdGenerator();
-console.log(getId()); // 1
-console.log(getId()); // 2
-console.log(getId()); // 3
+```bash
+# Step by step
+git clone https://github.com/your-username/repo.git
+cd repo
+git checkout -b feature/add-readme
+echo "# My Project" > README.md
+git add README.md
+git commit -m "docs: add README file"
+git push origin feature/add-readme
 ```
 
-### Exercise 4: Async/Await
+### Exercise 3: Handling Git conflicts
 
-```javascript
-// Write function to fetch multiple users and return total age
-async function getTotalAge(userIds) {
-  // Your code here
-  // Use Promise.all to fetch in parallel
-}
+1. Create 2 branches from main
+2. Modify the same file in 2 different branches
+3. Merge the first branch to main
+4. Merge the second branch and resolve conflicts
 
-getTotalAge([1, 2, 3]).then((total) => console.log(total));
-```
+### Exercise 4: npm & package.json
+
+1. Initialize a new project with npm init
+2. Install some dependencies (e.g., lodash, axios)
+3. Create scripts in package.json
+4. Run the created scripts
 
 ---
 
 ## References
 
-1. [MDN Web Docs - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-2. [JavaScript.info](https://javascript.info/)
-3. [Git Documentation](https://git-scm.com/doc)
-4. [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS)
-5. [Eloquent JavaScript](https://eloquentjavascript.net/)
+1. [Git Documentation](https://git-scm.com/doc)
+2. [GitHub Guides](https://guides.github.com/)
+3. [Conventional Commits](https://www.conventionalcommits.org/)
+4. [VS Code Documentation](https://code.visualstudio.com/docs)
+5. [Node.js Documentation](https://nodejs.org/docs)
+6. [npm Documentation](https://docs.npmjs.com/)
+7. [ESLint Documentation](https://eslint.org/docs)
+8. [Prettier Documentation](https://prettier.io/docs)
 
 ---
 
-**Next Module:** [HTML, CSS →](./02-html-css.md)
+**Next Module:** [JavaScript Basics →](./02-javascript-basics.md)

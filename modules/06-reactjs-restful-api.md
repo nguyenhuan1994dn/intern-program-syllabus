@@ -1,4 +1,4 @@
-# Module 4: ReactJS + Restful API
+# Module 6: ReactJS + Restful API
 
 ## Mục tiêu module
 

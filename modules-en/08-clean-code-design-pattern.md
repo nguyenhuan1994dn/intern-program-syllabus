@@ -1,4 +1,4 @@
-# Module 6: Clean Code and Design Pattern
+# Module 8: Clean Code and Design Pattern
 
 ## Module Objectives
 

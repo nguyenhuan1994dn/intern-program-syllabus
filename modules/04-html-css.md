@@ -1,4 +1,4 @@
-# Module 2: HTML, CSS
+# Module 4: HTML, CSS
 
 ## Mục tiêu module
 

@@ -1,4 +1,4 @@
-# Module 3: TypeScript
+# Module 5: TypeScript
 
 ## Module Objectives
 

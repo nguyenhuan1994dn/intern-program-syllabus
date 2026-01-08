@@ -2,7 +2,7 @@
 
 ## Module Objectives
 
-This module helps you understand GraphQL - một query language hiện đại cho APIs, cung cấp cách hiệu quả hơn để fetch dữ liệu so với REST API.
+This module helps you understand GraphQL - a modern query language for APIs, providing a more efficient way to fetch data compared to REST API.
 
 ---
 
@@ -10,14 +10,14 @@ This module helps you understand GraphQL - một query language hiện đại ch
 
 ### Concept
 
-**GraphQL** là một query language và runtime cho APIs, được phát triển bởi Facebook năm 2012.
+**GraphQL** is a query language and runtime for APIs, developed by Facebook in 2012.
 
-**Đặc điểm chính:**
+**Main features:**
 
-- **Single Endpoint**: Chỉ một endpoint (thường là `/graphql`)
-- **Declarative Data Fetching**: Client quyết định data cần lấy
-- **Strong Typing**: Schema-based với type system
-- **No Over/Under-fetching**: Lấy đúng data cần thiết
+- **Single Endpoint**: Only one endpoint (usually `/graphql`)
+- **Declarative Data Fetching**: Client decides what data to fetch
+- **Strong Typing**: Schema-based with type system
+- **No Over/Under-fetching**: Fetch exactly the necessary data
 
 **Core Concepts:**
 
@@ -244,7 +244,7 @@ query GetUsers {
 | **Type System**    | Strong typing                 | No built-in typing              |
 | **Real-time**      | Subscriptions built-in        | Requires WebSockets/SSE         |
 
-### Examples so sánh
+### Comparison Examples
 
 ```typescript
 // ========== REST API ==========
@@ -366,22 +366,22 @@ async function getUserData(userId) {
 }
 ```
 
-### Khi nào dùng GraphQL?
+### When to use GraphQL?
 
-**✅ Sử dụng GraphQL khi:**
+**✅ Use GraphQL when:**
 
-- App cần fetch nhiều related data
-- Có nhiều clients khác nhau (mobile, web, desktop)
-- Cần real-time updates
-- Muốn tránh over/under-fetching
-- Team lớn, cần strong typing
+- App needs to fetch multiple related data
+- There are multiple different clients (mobile, web, desktop)
+- Need real-time updates
+- Want to avoid over/under-fetching
+- Large team, need strong typing
 
-**❌ Không nên dùng GraphQL khi:**
+**❌ Do not use GraphQL when:**
 
 - Simple CRUD app
 - File uploads (better with REST)
-- Caching requirements phức tạp
-- Team nhỏ, simple requirements
+- Complex caching requirements
+- Small team, simple requirements
 
 ---
 
@@ -389,12 +389,12 @@ async function getUserData(userId) {
 
 ### Concept
 
-**Apollo Client** là GraphQL client phổ biến nhất cho React.
+**Apollo Client** is the most popular GraphQL client for React.
 
 **Main Hooks:**
 
-- `useQuery`: Fetch data (tự động fetch khi component mount)
-- `useLazyQuery`: Fetch data manually (gọi khi cần)
+- `useQuery`: Fetch data (automatically fetch when component mounts)
+- `useLazyQuery`: Fetch data manually (call when needed)
 - `useMutation`: Modify data
 - `useSubscription`: Real-time updates
 
@@ -773,15 +773,15 @@ function DeleteUserButton({ userId }: { userId: string }) {
 
 #### Concept
 
-Apollo Client tự động cache data theo `id` và `__typename`.
+Apollo Client automatically caches data based on `id` and `__typename`.
 
 **Fetch Policies:**
 
-- `cache-first` (default): Kiểm tra cache trước, fetch nếu không có
-- `cache-only`: Chỉ dùng cache, không fetch
-- `network-only`: Luôn fetch, update cache
-- `no-cache`: Fetch nhưng không cache
-- `cache-and-network`: Dùng cache + fetch background
+- `cache-first` (default): Check cache first, fetch if not present
+- `cache-only`: Use cache only, no fetch
+- `network-only`: Always fetch, update cache
+- `no-cache`: Fetch but do not cache
+- `cache-and-network`: Use cache + fetch in background
 
 #### Examples
 
@@ -889,7 +889,7 @@ function ManualCacheUpdate() {
 
 #### Concept
 
-**Fragments** cho phép tái sử dụng query fields.
+**Fragments** allow reusing query fields.
 
 #### Examples
 
@@ -1195,41 +1195,41 @@ export default App;
 
 ## Practice Exercises
 
-### Bài 1: Basic GraphQL Query
+### Exercise 1: Basic GraphQL Query
 
-Tạo component hiển thị danh sách posts với:
+Create a component to display list of posts with:
 
 - Title, content, author name
 - Loading state
 - Error handling
 - Refresh button
 
-### Bài 2: GraphQL Mutations
+### Exercise 2: GraphQL Mutations
 
-Tạo blog post manager với:
+Create a blog post manager with:
 
 - Create new post
 - Update post
 - Delete post
-- Auto-refresh sau mỗi mutation
+- Auto-refresh after each mutation
 
-### Bài 3: Search với LazyQuery
+### Exercise 3: Search with LazyQuery
 
-Tạo search feature:
+Create search feature:
 
 - Input search
-- Lazy query khi click Search
-- Hiển thị kết quả
+- Lazy query when clicking Search
+- Display results
 - Clear results
 
-### Bài 4: Advanced với Fragments
+### Exercise 4: Advanced with Fragments
 
-Tạo user profile page với:
+Create user profile page with:
 
 - User info fragment
 - Posts fragment
-- Nested author trong posts
-- Reuse fragments trong nhiều queries
+- Nested author in posts
+- Reuse fragments in multiple queries
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Module Objectives
 
-This module helps you write clean code, dễ đọc, dễ maintain và áp dụng các design patterns phổ biến trong phát triển phần mềm.
+This module helps you write clean code, easy to read, easy to maintain and apply common design patterns in software development.
 
 ---
 
@@ -10,14 +10,14 @@ This module helps you write clean code, dễ đọc, dễ maintain và áp dụn
 
 ### Concept
 
-**Naming Convention** là quy tắc đặt tên giúp code nhất quán và dễ hiểu.
+**Naming Convention** is a rule for naming that helps code be consistent and easy to understand.
 
-**Các quy tắc chung:**
+**General Rules:**
 
-1. **Descriptive & Meaningful**: Tên phải mô tả rõ mục đích
-2. **Consistent**: Nhất quán trong toàn bộ codebase
-3. **Avoid Abbreviations**: Tránh viết tắt khó hiểu
-4. **Use Pronounceable Names**: Dễ đọc, dễ phát âm
+1. **Descriptive & Meaningful**: Name must describe the purpose clearly
+2. **Consistent**: Consistent throughout the codebase
+3. **Avoid Abbreviations**: Avoid confusing abbreviations
+4. **Use Pronounceable Names**: Easy to read, easy to pronounce
 
 **JavaScript/TypeScript Conventions:**
 
@@ -26,7 +26,7 @@ This module helps you write clean code, dễ đọc, dễ maintain và áp dụn
 - **Classes**: PascalCase (`UserService`, `ProductManager`)
 - **Constants**: UPPER_SNAKE_CASE (`API_URL`, `MAX_RETRY`)
 - **Private members**: Prefix with `_` or `#` (`_privateMethod`, `#privateField`)
-- **Boolean**: Prefix với is/has/should (`isActive`, `hasPermission`, `shouldUpdate`)
+- **Boolean**: Prefix with is/has/should (`isActive`, `hasPermission`, `shouldUpdate`)
 - **Interfaces (TS)**: PascalCase, optional I prefix (`User` or `IUser`)
 - **Types (TS)**: PascalCase (`UserRole`, `ApiResponse`)
 - **Enums**: PascalCase (`Status`, `UserRole`)
@@ -187,14 +187,14 @@ if (user.role === Role.Admin) { }
 
 ### Concept
 
-**Code Structure** giúp organize code một cách logic và maintainable.
+**Code Structure** helps organize code logically and maintainably.
 
 **Project Structure Best Practices:**
 
-- **Feature-based**: Group by features thay vì types
-- **Separation of Concerns**: Tách riêng logic, UI, data
-- **Single Responsibility**: Mỗi file/module một nhiệm vụ
-- **DRY** (Don't Repeat Yourself): Tránh duplicate code
+- **Feature-based**: Group by features instead of types
+- **Separation of Concerns**: Separate logic, UI, data
+- **Single Responsibility**: Each file/module has one responsibility
+- **DRY** (Don't Repeat Yourself): Avoid duplicate code
 
 ### Examples
 
@@ -436,8 +436,8 @@ function UserManagement() {
 
 ### Concept
 
-**ESLint**: Linter để phát hiện lỗi và enforce code style.  
-**Prettier**: Code formatter để format code tự động.
+**ESLint**: Linter to detect errors and enforce code style.  
+**Prettier**: Code formatter to automatically format code.
 
 ### Setup
 
@@ -562,7 +562,7 @@ async function getUser(id: number): Promise<User> {
 
 ### Concept
 
-**Design Patterns** là solutions tái sử dụng cho các vấn đề phổ biến trong software design.
+**Design Patterns** are reusable solutions for common problems in software design.
 
 **3 Categories:**
 
@@ -585,7 +585,7 @@ async function getUser(id: number): Promise<User> {
 
 #### Concept
 
-**Composite Pattern** cho phép compose objects into tree structures để represent part-whole hierarchies.
+**Composite Pattern** allows composing objects into tree structures to represent part-whole hierarchies.
 
 **Use cases:**
 
@@ -720,11 +720,11 @@ function App() {
 
 #### Concept
 
-**Prototype Pattern** tạo objects mới bằng cách clone từ prototype object.
+**Prototype Pattern** creates new objects by cloning from a prototype object.
 
 **Use cases:**
 
-- Tạo nhiều objects tương tự
+- Create multiple similar objects
 - Avoid expensive initialization
 - Configuration objects
 
@@ -834,7 +834,7 @@ circle2.color = "blue";
 
 #### Concept
 
-**Flux** là application architecture pattern cho React, với unidirectional data flow.
+**Flux** is an application architecture pattern for React, with unidirectional data flow.
 
 **Components:**
 
@@ -1199,9 +1199,9 @@ const discount = order.total > 100 ? 0.1 : 0;
 
 ## Practice Exercises
 
-### Bài 1: Refactor Code
+### Exercise 1: Refactor Code
 
-Refactor đoạn code sau theo clean code principles:
+Refactor the following code according to clean code principles:
 
 ```typescript
 function p(u) {
@@ -1214,17 +1214,17 @@ function p(u) {
 }
 ```
 
-### Bài 2: Implement Composite Pattern
+### Exercise 2: Implement Composite Pattern
 
-Tạo component tree cho menu navigation với nested items.
+Create a component tree for navigation menu with nested items.
 
-### Bài3: Setup ESLint & Prettier
+### Exercise 3: Setup ESLint & Prettier
 
-Setup ESLint và Prettier cho React TypeScript project.
+Setup ESLint and Prettier for React TypeScript project.
 
-### Bài 4: Flux Pattern
+### Exercise 4: Flux Pattern
 
-Implement simple counter app sử dụng Flux pattern.
+Implement simple counter app using Flux pattern.
 
 ---
 

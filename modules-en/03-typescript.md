@@ -2,32 +2,32 @@
 
 ## Module Objectives
 
-This module helps you understand and use TypeScript - một superset của JavaScript với type system mạnh mẽ, giúp code an toàn và dễ maintain hơn.
+This module helps you understand and use TypeScript - a superset of JavaScript with a powerful type system, making code safer and easier to maintain.
 
 ---
 
-## 1. TypeScript là gì và cách hoạt động
+## 1. What is TypeScript and How It Works
 
 ### Concept
 
-**TypeScript** là ngôn ngữ lập trình được phát triển bởi Microsoft, mở rộng JavaScript bằng cách thêm:
+**TypeScript** is a programming language developed by Microsoft, extending JavaScript by adding:
 
-- **Static Type Checking**: Kiểm tra kiểu dữ liệu lúc compile-time
-- **Type Annotations**: Khai báo kiểu dữ liệu rõ ràng
+- **Static Type Checking**: Check data types at compile-time
+- **Type Annotations**: Explicit type declarations
 - **Advanced Features**: Interfaces, Generics, Decorators, etc.
 
-**Cách hoạt động:**
+**How it works:**
 
 ```
 TypeScript Code (.ts) → TypeScript Compiler (tsc) → JavaScript Code (.js) → Browser/Node.js
 ```
 
-**Lợi ích:**
+**Benefits:**
 
-- ✅ Phát hiện lỗi sớm (compile-time thay vì runtime)
-- ✅ IntelliSense tốt hơn (autocomplete, type hints)
-- ✅ Refactoring an toàn hơn
-- ✅ Code dễ đọc và maintain
+- ✅ Detect errors early (compile-time instead of runtime)
+- ✅ Better IntelliSense (autocomplete, type hints)
+- ✅ Safer refactoring
+- ✅ Code is easier to read and maintain
 
 ### Examples
 
@@ -36,7 +36,7 @@ TypeScript Code (.ts) → TypeScript Compiler (tsc) → JavaScript Code (.js) �
 function add(a, b) {
   return a + b;
 }
-console.log(add(5, "10")); // "510" - Bug nhưng không báo lỗi!
+console.log(add(5, "10")); // "510" - Bug but no error!
 
 // TypeScript (với type checking)
 function addTS(a: number, b: number): number {
@@ -61,7 +61,7 @@ tsc --watch
 */
 ```
 
-**tsconfig.json cơ bản:**
+**Basic tsconfig.json:**
 
 ```json
 {
@@ -82,18 +82,18 @@ tsc --watch
 
 ---
 
-## 2. Tại sao TypeScript có lợi thế hơn vanilla JavaScript
+## 2. Why TypeScript Has Advantages Over Vanilla JavaScript
 
 ### Concept
 
-TypeScript giải quyết các vấn đề của JavaScript:
+TypeScript solves JavaScript's problems:
 
 **1. Type Safety:**
 
 ```typescript
 // JavaScript - Runtime error
 function getUserName(user) {
-  return user.name.toUpperCase(); // Crash nếu user là null!
+  return user.name.toUpperCase(); // Crash if user is null!
 }
 
 // TypeScript - Compile time error
@@ -105,7 +105,7 @@ function getUserNameTS(user: { name: string } | null): string {
 
 **2. Better IDE Support:**
 
-- Autocomplete chính xác
+- Accurate autocomplete
 - Type hints
 - Inline documentation
 - Refactoring tools
@@ -126,13 +126,13 @@ function createUser(data: User): Promise<User> {
   // Implementation
 }
 
-// Ai đọc code đều biết structure của User mà không cần docs!
+// Anyone reading the code knows the structure of User without needing docs!
 ```
 
 **4. Catch Bugs Early:**
 
 ```typescript
-// JavaScript - Bug sẽ xuất hiện ở production
+// JavaScript - Bug will appear in production
 const users = [
   { id: 1, name: "Alice" },
   { id: 2, name: "Bob" },
@@ -142,7 +142,7 @@ users.forEach((user) => {
   console.log(user.nmae); // Typo! undefined
 });
 
-// TypeScript - Phát hiện ngay
+// TypeScript - Detects immediately
 interface User {
   id: number;
   name: string;
@@ -159,11 +159,11 @@ usersTS.forEach((user) => {
 });
 ```
 
-### Examples so sánh
+### Comparison Examples
 
 ```typescript
 // ========== JAVASCRIPT ==========
-// Bug chỉ xuất hiện khi runtime
+// Bug only appears at runtime
 function calculateDiscount(price, discount) {
   return price - (price * discount) / 100;
 }
@@ -172,7 +172,7 @@ calculateDiscount(100, "20"); // NaN - Bug!
 calculateDiscount("100", 20); // "100..." - Bug!
 
 // ========== TYPESCRIPT ==========
-// Bug bị phát hiện ngay khi viết code
+// Bug is detected immediately when writing code
 function calculateDiscountTS(price: number, discount: number): number {
   return price - (price * discount) / 100;
 }
@@ -239,13 +239,13 @@ function processOrderTS(order: Order): ProcessedOrder {
 
 ---
 
-## 3. TypeScript và các tính năng
+## 3. TypeScript Features
 
-### 3.1 Types (Các kiểu dữ liệu)
+### 3.1 Types (Data Types)
 
 #### Concept
 
-TypeScript cung cấp nhiều types:
+TypeScript provides many types:
 
 - **Primitive Types**: number, string, boolean, null, undefined, symbol, bigint
 - **Object Types**: object, array, tuple, function
@@ -314,7 +314,7 @@ function infiniteLoop(): never {
 
 #### Concept
 
-TypeScript hỗ trợ tất cả tính năng ES6+ và compile về ES5 nếu cần.
+TypeScript supports all ES6+ features and can compile to ES5 if needed.
 
 #### Examples
 
@@ -390,7 +390,7 @@ async function getUser(id: number): Promise<User> {
 
 #### Concept
 
-TypeScript classes với access modifiers, abstract classes, và static members.
+TypeScript classes with access modifiers, abstract classes, and static members.
 
 #### Examples
 
@@ -536,7 +536,7 @@ const point = new Point(10, 20);
 
 #### Concept
 
-TypeScript hỗ trợ ES6 modules với type safety.
+TypeScript supports ES6 modules with type safety.
 
 #### Examples
 
@@ -618,7 +618,7 @@ export * from "./math";
 
 #### Concept
 
-Interface định nghĩa contract cho objects, classes, và functions.
+Interface defines a contract for objects, classes, and functions.
 
 #### Examples
 
@@ -752,11 +752,11 @@ const arr: NumberArray = [1, 2, 3, 4, 5];
 
 ---
 
-## 4. Khác nhau của TS vs JS
+## 4. Differences Between TS and JS
 
 ### Concept
 
-Những điểm khác biệt chính giữa TypeScript và JavaScript.
+Key differences between TypeScript and JavaScript.
 
 ### Comparison
 
@@ -875,17 +875,17 @@ accountTS.withdraw(50); // ✅ OK
 
 ---
 
-## 5. Các kiểu dữ liệu trong TypeScript
+## 5. Data Types in TypeScript
 
 ### 5.1 Interface
 
-_(Đã đề cập ở phần 3.5)_
+_(Already covered in section 3.5)_
 
 ### 5.2 Type
 
 #### Concept
 
-`type` alias tạo tên mới cho một type. Tương tự interface nhưng linh hoạt hơn.
+`type` alias creates a new name for a type. Similar to interface but more flexible.
 
 #### Examples
 
@@ -974,7 +974,7 @@ interface Window {
 
 #### Concept
 
-Enum định nghĩa tập hợp các hằng số có tên.
+Enum defines a set of named constants.
 
 #### Examples
 
@@ -1056,7 +1056,7 @@ console.log(handleStatus(Status.Approved));
 
 #### Concept
 
-TypeScript cung cấp built-in utility types để transform types.
+TypeScript provides built-in utility types to transform types.
 
 #### Examples
 
@@ -1144,7 +1144,7 @@ type CreateUserParams = Parameters<typeof createUser>;
 
 #### Concept
 
-`keyof` creates a union of all property keys của một object type.
+`keyof` creates a union of all property keys of an object type.
 
 #### Examples
 
@@ -1191,7 +1191,7 @@ type ReadonlyUser = ReadonlyType<User>;
 
 #### Concept
 
-`typeof` lấy type của một value.
+`typeof` gets the type of a value.
 
 #### Examples
 
@@ -1228,13 +1228,13 @@ type Config = typeof config;
 
 ### 6.4 Type Annotations
 
-_(Đã đề cập trong các phần trước)_
+_(Already covered in previous sections)_
 
 ### 6.5 Type Inference
 
 #### Concept
 
-TypeScript tự động suy luận types khi không được khai báo rõ ràng.
+TypeScript automatically infers types when not explicitly declared.
 
 #### Examples
 
@@ -1266,16 +1266,16 @@ function multiply(a: number, b: number) {
 }
 ```
 
-### 6.6 Type Assertion với từ khóa `as`
+### 6.6 Type Assertion with the `as` Keyword
 
 #### Concept
 
-Type Assertion cho TypeScript biết "Trust me, I know this type".
+Type Assertion tells TypeScript "Trust me, I know this type".
 
 #### Examples
 
 ```typescript
-// Type Assertion với 'as'
+// Type Assertion with 'as'
 let someValue: unknown = "this is a string";
 let strLength: number = (someValue as string).length;
 
@@ -1318,12 +1318,12 @@ let num: number = value as number; // ❌ Runtime error!
 
 #### Concept
 
-4 nguyên lý OOP:
+4 OOP Principles:
 
-1. **Encapsulation** (Đóng gói): Ẩn internal state
-2. **Inheritance** (Kế thừa): Tái sử dụng code
-3. **Polymorphism** (Đa hình): Nhiều hình thức khác nhau
-4. **Abstraction** (Trừu tượng hóa): Ẩn complexity
+1. **Encapsulation**: Hide internal state
+2. **Inheritance**: Code reuse
+3. **Polymorphism**: Multiple different forms
+4. **Abstraction**: Hide complexity
 
 #### Examples
 
@@ -1418,7 +1418,7 @@ class Motorcycle extends Vehicle {
 
 ### 7.2 Abstract Class
 
-_(Đã đề cập ở phần trên)_
+_(Already covered above)_
 
 ### 7.3 Decorator
 
@@ -1502,7 +1502,7 @@ class Greeter {
 
 #### Concept
 
-Generics cho phép tạo reusable components với nhiều types khác nhau.
+Generics allow creating reusable components with different types.
 
 #### Examples
 
@@ -1592,7 +1592,7 @@ function merge<T, U>(obj1: T, obj2: U): T & U {
 const merged = merge({ name: "Alice" }, { age: 25 });
 // { name: string; age: number; }
 
-// Generic Constraints với keyof
+// Generic Constraints with keyof
 function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];
 }
@@ -1606,24 +1606,24 @@ const name = getProperty(user, "name"); // string
 
 ## Practice Exercises
 
-### Bài 1: Basic Types
+### Exercise 1: Basic Types
 
 ```typescript
-// Định nghĩa interface cho Student
+// Define an interface for Student
 interface Student {
   // Your code here
 }
 
-// Tạo function tính điểm trung bình
+// Create a function to calculate average score
 function calculateAverage(student: Student): number {
   // Your code here
 }
 ```
 
-### Bài 2: Generics
+### Exercise 2: Generics
 
 ```typescript
-// Tạo generic function để filter array
+// Create a generic function to filter array
 function filterArray<T>(arr: T[], predicate: (item: T) => boolean): T[] {
   // Your code here
 }
@@ -1633,10 +1633,10 @@ const numbers = [1, 2, 3, 4, 5, 6];
 const evenNumbers = filterArray(numbers, (n) => n % 2 === 0);
 ```
 
-### Bài 3: Class & OOP
+### Exercise 3: Class & OOP
 
 ```typescript
-// Tạo class hierarchy cho e-commerce system
+// Create a class hierarchy for e-commerce system
 // Abstract class Product
 // Class PhysicalProduct extends Product
 // Class DigitalProduct extends Product
@@ -1654,9 +1654,9 @@ interface Product {
   inStock: boolean;
 }
 
-// Tạo type cho product update (tất cả fields optional)
-// Tạo type cho product preview (chỉ id, name, price)
-// Tạo readonly product type
+// Create a type for product update (all fields optional)
+// Create a type for product preview (only id, name, price)
+// Create a readonly product type
 ```
 
 ---

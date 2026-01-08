@@ -2,7 +2,7 @@
 
 ## Module Objectives
 
-This module helps you master ReactJS - thư viện UI phổ biến nhất hiện nay, cùng với cách tích hợp RESTful API.
+This module helps you master ReactJS - the most popular UI library today, along with how to integrate RESTful APIs.
 
 ---
 
@@ -10,34 +10,34 @@ This module helps you master ReactJS - thư viện UI phổ biến nhất hiện
 
 ###1.1 Concept
 
-**REST** (Representational State Transfer) là một kiến trúc cho web services sử dụng HTTP methods.
+**REST** (Representational State Transfer) is an architecture for web services using HTTP methods.
 
-**6 nguyên tắc REST:**
+**6 REST Principles:**
 
-1. **Client-Server**: Tách biệt client và server
-2. **Stateless**: Mỗi request độc lập, không lưu state
-3. **Cacheable**: Response có thể cache được
-4. **Uniform Interface**: Interface thống nhất
-5. **Layered System**: Hệ thống nhiều layer
-6. **Code on Demand** (optional): Server có thể gửi code
+1. **Client-Server**: Separation of client and server
+2. **Stateless**: Each request is independent, no state stored
+3. **Cacheable**: Response can be cached
+4. **Uniform Interface**: Unified interface
+5. **Layered System**: Multi-layer system
+6. **Code on Demand** (optional): Server can send code
 
 **HTTP Methods:**
 
-- `GET`: Lấy dữ liệu
-- `POST`: Tạo mới
-- `PUT`: Cập nhật toàn bộ
-- `PATCH`: Cập nhật một phần
-- `DELETE`: Xóa
+- `GET`: Retrieve data
+- `POST`: Create new
+- `PUT`: Update entire resource
+- `PATCH`: Partial update
+- `DELETE`: Delete
 
 **Status Codes:**
 
-- `200 OK`: Thành công
-- `201 Created`: Tạo thành công
-- `400 Bad Request`: Request sai
-- `401 Unauthorized`: Chưa xác thực
-- `403 Forbidden`: Không có quyền
-- `404 Not Found`: Không tìm thấy
-- `500 Internal Server Error`: Lỗi server
+- `200 OK`: Success
+- `201 Created`: Created successfully
+- `400 Bad Request`: Invalid request
+- `401 Unauthorized`: Not authenticated
+- `403 Forbidden`: No permission
+- `404 Not Found`: Resource not found
+- `500 Internal Server Error`: Server error
 
 ### 1.2 Examples
 
@@ -45,7 +45,7 @@ This module helps you master ReactJS - thư viện UI phổ biến nhất hiện
 // API Endpoints Examples
 const API_BASE_URL = "https://api.example.com";
 
-// GET - Lấy danh sách users
+// GET - Get list of users
 GET /api/users
 Response: 200 OK
 {
@@ -56,7 +56,7 @@ Response: 200 OK
   "total": 2
 }
 
-// GET - Lấy user theo ID
+// GET - Get user by ID
 GET /api/users/1
 Response: 200 OK
 {
@@ -66,7 +66,7 @@ Response: 200 OK
   "role": "admin"
 }
 
-// POST - Tạo user mới
+// POST - Create new user
 POST /api/users
 Body: {
   "name": "Charlie",
@@ -80,7 +80,7 @@ Response: 201 Created
   "email": "charlie@example.com"
 }
 
-// PUT - Cập nhật toàn bộ user
+// PUT - Update entire user
 PUT /api/users/1
 Body: {
   "name": "Alice Updated",
@@ -89,14 +89,14 @@ Body: {
 }
 Response: 200 OK
 
-// PATCH - Cập nhật một phần
+// PATCH - Partial update
 PATCH /api/users/1
 Body: {
   "role": "admin"
 }
 Response: 200 OK
 
-// DELETE - Xóa user
+// DELETE - Delete user
 DELETE /api/users/1
 Response: 204 No Content
 
@@ -121,7 +121,7 @@ Response: 400 Bad Request
 }
 ```
 
-### 1.3 Fetch API trong JavaScript/TypeScript
+### 1.3 Fetch API in JavaScript/TypeScript
 
 ```typescript
 // ========== INTERFACES ==========
@@ -275,13 +275,13 @@ async function fetchUsersWithErrorHandling() {
 
 ### Concept
 
-**Headers** chứa metadata của request/response.
+**Headers** contain metadata for request/response.
 
 **Common Headers:**
 
-- `Content-Type`: Định dạng dữ liệu
-- `Authorization`: Xác thực
-- `Accept`: Định dạng response mong muốn
+- `Content-Type`: Data format
+- `Authorization`: Authentication
+- `Accept`: Desired response format
 - `Access-Control-Allow-Origin`: CORS policy
 
 **Content Types:**
@@ -292,7 +292,7 @@ async function fetchUsersWithErrorHandling() {
 - `text/plain`: Plain text
 - `text/html`: HTML
 
-**CORS** (Cross-Origin Resource Sharing): Cho phép requests từ domain khác.
+**CORS** (Cross-Origin Resource Sharing): Allows requests from different domains.
 
 ### Examples
 
@@ -402,18 +402,18 @@ async function readResponseHeaders() {
 
 **Authentication vs Authorization:**
 
-- **401 Unauthorized**: Chưa đăng nhập (authentication failed)
-- **403 Forbidden**: Đã đăng nhập nhưng không có quyền (authorization failed)
+- **401 Unauthorized**: Not logged in (authentication failed)
+- **403 Forbidden**: Logged in but no permission (authorization failed)
 
 **Other Common Errors:**
 
-- **400 Bad Request**: Request sai format
-- **404 Not Found**: Resource không tồn tại
+- **400 Bad Request**: Wrong request format
+- **404 Not Found**: Resource does not exist
 - **409 Conflict**: Conflict (e.g., duplicate email)
 - **422 Unprocessable Entity**: Validation error
 - **429 Too Many Requests**: Rate limit exceeded
-- **500 Internal Server Error**: Lỗi server
-- **503 Service Unavailable**: Service tạm thời không khả dụng
+- **500 Internal Server Error**: Server error
+- **503 Service Unavailable**: Service temporarily unavailable
 
 ### Examples
 
@@ -537,14 +537,14 @@ async function fetchWithRetry<T>(
 
 ### Concept
 
-**Request** gồm:
+**Request** consists of:
 
 - Method (GET, POST, etc.)
 - URL
 - Headers
 - Body (optional)
 
-**Response** gồm:
+**Response** consists of:
 
 - Status Code
 - Headers
@@ -651,8 +651,8 @@ await api.delete("/users/1");
 
 ### Concept
 
-**FormData**: API để gửi form data và files.
-**XMLHttpRequest**: API cũ để thực hiện HTTP requests (trước Fetch API).
+**FormData**: API for sending form data and files.
+**XMLHttpRequest**: Legacy API for making HTTP requests (before Fetch API).
 
 ### Examples
 
@@ -806,7 +806,7 @@ uploadFileWithProgress(file, (percent) => {
 2. **Updating**: componentDidUpdate()
 3. **Unmounting**: componentWillUnmount()
 
-**Functional Components** (hiện đại): Sử dụng **Hooks** thay vì lifecycle methods.
+**Functional Components** (modern): Use **Hooks** instead of lifecycle methods.
 
 #### Examples
 
@@ -924,7 +924,7 @@ function LifecycleHooks() {
 
 #### Concept
 
-**Hooks** là functions cho phép sử dụng state và lifecycle trong functional components.
+**Hooks** are functions that allow using state and lifecycle in functional components.
 
 **Built-in Hooks:**
 
@@ -934,7 +934,7 @@ function LifecycleHooks() {
 - `useReducer`: Complex state logic
 - `useCallback`: Memoize functions
 - `useMemo`: Memoize values
-- `useRef`: DOM refs và mutable values
+- `useRef`: DOM refs and mutable values
 
 #### Examples
 
@@ -1144,21 +1144,21 @@ function ThemedButton() {
 
 #### Concept
 
-**Virtual DOM** là representation của Real DOM trong memory.
+**Virtual DOM** is a representation of the Real DOM in memory.
 
-**Cách hoạt động:**
+**How it works:**
 
-1. State thay đổi
-2. React tạo new Virtual DOM tree
-3. React so sánh (diffing) với previous Virtual DOM
-4. React tính toán minimal changes
-5. React cập nhật Real DOM (reconciliation)
+1. State changes
+2. React creates a new Virtual DOM tree
+3. React compares (diffing) with previous Virtual DOM
+4. React calculates minimal changes
+5. React updates Real DOM (reconciliation)
 
-**Lợi ích:**
+**Benefits:**
 
-- ✅ Performance: Chỉ update phần thay đổi
-- ✅ Batching: Gom nhiều updates lại
-- ✅ Declarative: Developer chỉ cần khai báo UI
+- ✅ Performance: Only updates changed parts
+- ✅ Batching: Groups multiple updates together
+- ✅ Declarative: Developer only needs to declare UI
 
 #### Examples
 
@@ -1168,12 +1168,12 @@ function CounterDemo() {
   const [count, setCount] = useState(0);
 
   console.log("Component re-renders");
-  // Nhưng chỉ có phần count update trong DOM!
+  // But only the count part updates in the DOM!
 
   return (
     <div>
       <h1>Static Header</h1>
-      <p>Count: {count}</p> {/* Chỉ phần này update */}
+      <p>Count: {count}</p> {/* Only this part updates */}
       <button onClick={() => setCount(count + 1)}>Increment</button>
       <footer>Static Footer</footer>
     </div>
@@ -1189,7 +1189,7 @@ function TodoList() {
 
   const addTodo = () => {
     setTodos([...todos, { id: Date.now(), text: "New Todo" }]);
-    // React chỉ thêm 1 <li> mới, không re-render toàn bộ list
+    // React only adds 1 new <li>, doesn't re-render the entire list
   };
 
   return (
@@ -1241,18 +1241,18 @@ function GoodList() {
 
 #### Concept
 
-**React Router** là thư viện routing cho React applications.
+**React Router** is a routing library for React applications.
 
 **Main Components:**
 
-- `BrowserRouter`: Router cho browser
-- `Routes`: Container cho routes
-- `Route`: Định nghĩa một route
+- `BrowserRouter`: Router for browser
+- `Routes`: Container for routes
+- `Route`: Define a route
 - `Link`: Navigation link
 - `Navigate`: Programmatic navigation
-- `useNavigate`: Hook để navigate
-- `useParams`: Hook để lấy URL params
-- `useLocation`: Hook để lấy location info
+- `useNavigate`: Hook for navigation
+- `useParams`: Hook to get URL params
+- `useLocation`: Hook to get location info
 
 #### Examples
 
@@ -1427,30 +1427,30 @@ function Header() {
 
 ## Practice Exercises
 
-### Bài 1: API Integration
+### Exercise 1: API Integration
 
-Tạo một UserManager component:
+Create a UserManager component:
 
-- Fetch và hiển thị danh sách users
-- Thêm user mới
-- Sửa user
-- Xóa user
-- Xử lý loading và error states
+- Fetch and display list of users
+- Add new user
+- Edit user
+- Delete user
+- Handle loading and error states
 
-### Bài 2: Form với File Upload
+### Exercise 2: Form with File Upload
 
-Tạo form upload avatar:
+Create an avatar upload form:
 
-- Input fields cho name, email
-- File input cho avatar
-- Progress bar khi upload
-- Preview ảnh trước khi upload
+- Input fields for name, email
+- File input for avatar
+- Progress bar during upload
+- Image preview before upload
 
-### Bài 3: React App với Router
+### Exercise 3: React App with Router
 
-Tạo blog app với:
+Create a blog app with:
 
-- Home page (danh sách posts)
+- Home page (list of posts)
 - Post detail page (/:id)
 - Create post page
 - Profile page (protected route)

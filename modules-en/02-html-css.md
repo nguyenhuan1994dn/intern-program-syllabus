@@ -10,28 +10,28 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 
 ### Concept
 
-**Flexbox** (Flexible Box Layout) là một CSS layout module giúp sắp xếp items trong container một cách linh hoạt theo một chiều (row hoặc column).
+**Flexbox** (Flexible Box Layout) is a CSS layout module that helps arrange items in a container flexibly along one dimension (row or column).
 
 **Main concepts:**
 
-- **Flex Container**: Element cha có `display: flex`
-- **Flex Items**: Các elements con
-- **Main Axis**: Trục chính (mặc định là horizontal)
-- **Cross Axis**: Trục phụ (vuông góc với main axis)
+- **Flex Container**: Parent element with `display: flex`
+- **Flex Items**: Child elements
+- **Main Axis**: Primary axis (default is horizontal)
+- **Cross Axis**: Secondary axis (perpendicular to main axis)
 
 **Flex Container Properties:**
 
-- `flex-direction`: Hướng của main axis (row, column, row-reverse, column-reverse)
-- `justify-content`: Căn chỉnh theo main axis
-- `align-items`: Căn chỉnh theo cross axis
-- `flex-wrap`: Cho phép items xuống dòng
-- `gap`: Khoảng cách giữa items
+- `flex-direction`: Direction of main axis (row, column, row-reverse, column-reverse)
+- `justify-content`: Alignment along main axis
+- `align-items`: Alignment along cross axis
+- `flex-wrap`: Allow items to wrap to next line
+- `gap`: Space between items
 
 **Flex Item Properties:**
 
-- `flex-grow`: Khả năng mở rộng
-- `flex-shrink`: Khả năng thu nhỏ
-- `flex-basis`: Kích thước ban đầu
+- `flex-grow`: Ability to grow
+- `flex-shrink`: Ability to shrink
+- `flex-basis`: Initial size
 - `flex`: Shorthand (grow, shrink, basis)
 - `align-self`: Override align-items
 
@@ -107,9 +107,9 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 /* Basic Flexbox Container */
 .flex-container {
   display: flex;
-  justify-content: space-between; /* Căn đều items */
-  align-items: center; /* Căn giữa theo chiều dọc */
-  gap: 20px; /* Khoảng cách giữa items */
+  justify-content: space-between; /* Evenly distribute items */
+  align-items: center; /* Center vertically */
+  gap: 20px; /* Space between items */
   padding: 20px;
   background-color: #f0f0f0;
 }
@@ -119,11 +119,11 @@ This module helps you master modern layout techniques, responsive CSS, and seman
   color: white;
   padding: 20px;
   text-align: center;
-  flex: 1; /* Chia đều không gian */
+  flex: 1; /* Distribute space equally */
 }
 
 .flex-item:nth-child(2) {
-  flex: 2; /* Item 2 rộng gấp đôi */
+  flex: 2; /* Item 2 is twice as wide */
 }
 
 /* Navigation Bar */
@@ -171,14 +171,14 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 /* Card Layout */
 .card-container {
   display: flex;
-  flex-wrap: wrap; /* Cho phép xuống dòng */
+  flex-wrap: wrap; /* Allow wrapping to next line */
   gap: 20px;
   padding: 20px;
 }
 
 .card {
   display: flex;
-  flex-direction: column; /* Sắp xếp theo chiều dọc */
+  flex-direction: column; /* Arrange vertically */
   flex: 1 1 300px; /* grow shrink basis */
   min-width: 250px;
   max-width: 350px;
@@ -201,12 +201,12 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 
 .card p {
   padding: 0 1rem;
-  flex-grow: 1; /* Chiếm hết không gian còn lại */
+  flex-grow: 1; /* Take up remaining space */
 }
 
 .card button {
   margin: 1rem;
-  margin-top: auto; /* Đẩy button xuống dưới */
+  margin-top: auto; /* Push button to bottom */
   padding: 0.75rem;
   background-color: #4caf50;
   color: white;
@@ -218,8 +218,8 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 /* Perfect Centering */
 .center-container {
   display: flex;
-  justify-content: center; /* Căn giữa horizontal */
-  align-items: center; /* Căn giữa vertical */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -253,32 +253,32 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 
 ### Concept
 
-**CSS Grid** là hệ thống layout hai chiều (rows và columns), mạnh mẽ hơn Flexbox cho các layouts phức tạp.
+**CSS Grid** is a two-dimensional layout system (rows and columns), more powerful than Flexbox for complex layouts.
 
 **Main concepts:**
 
-- **Grid Container**: Element cha có `display: grid`
-- **Grid Items**: Các elements con
-- **Grid Lines**: Đường phân chia rows/columns
-- **Grid Tracks**: Rows hoặc columns
-- **Grid Cells**: Ô cơ bản
-- **Grid Areas**: Vùng gồm nhiều cells
+- **Grid Container**: Parent element with `display: grid`
+- **Grid Items**: Child elements
+- **Grid Lines**: Lines dividing rows/columns
+- **Grid Tracks**: Rows or columns
+- **Grid Cells**: Basic units
+- **Grid Areas**: Region consisting of multiple cells
 
 **Grid Container Properties:**
 
-- `grid-template-columns`: Định nghĩa columns
-- `grid-template-rows`: Định nghĩa rows
-- `grid-template-areas`: Định nghĩa layout bằng tên
-- `gap` / `grid-gap`: Khoảng cách giữa items
-- `justify-items`, `align-items`: Căn chỉnh items
-- `justify-content`, `align-content`: Căn chỉnh grid
+- `grid-template-columns`: Define columns
+- `grid-template-rows`: Define rows
+- `grid-template-areas`: Define layout using names
+- `gap` / `grid-gap`: Space between items
+- `justify-items`, `align-items`: Align items
+- `justify-content`, `align-content`: Align grid
 
 **Grid Item Properties:**
 
-- `grid-column`: Vị trí column (start/end)
-- `grid-row`: Vị trí row (start/end)
-- `grid-area`: Đặt tên hoặc vị trí
-- `justify-self`, `align-self`: Căn chỉnh item
+- `grid-column`: Column position (start/end)
+- `grid-row`: Row position (start/end)
+- `grid-area`: Name or position
+- `justify-self`, `align-self`: Align item
 
 ### Examples
 
@@ -351,7 +351,7 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 /* Basic Grid - 3 columns, auto rows */
 .grid-basic {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cột bằng nhau */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
   grid-template-rows: auto;
   gap: 20px;
   padding: 20px;
@@ -442,8 +442,8 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 
 /* Spanning items */
 .item-1 {
-  grid-column: 1 / 3; /* Chiếm 2 columns */
-  grid-row: 1 / 3; /* Chiếm 2 rows */
+  grid-column: 1 / 3; /* Span 2 columns */
+  grid-row: 1 / 3; /* Span 2 rows */
 }
 
 .item-2 {
@@ -474,9 +474,9 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 /* Advanced Grid Functions */
 .advanced-grid {
   display: grid;
-  /* minmax: tối thiểu 200px, tối đa 1fr */
+  /* minmax: minimum 200px, maximum 1fr */
   grid-template-columns: repeat(3, minmax(200px, 1fr));
-  /* fit-content: vừa đủ với content */
+  /* fit-content: fits the content */
   grid-template-rows: fit-content(300px) auto;
   gap: 1rem;
 }
@@ -495,7 +495,7 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 
 @media (max-width: 768px) {
   .grid-basic {
-    grid-template-columns: repeat(2, 1fr); /* 2 cột */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
   }
 
   .page-layout {
@@ -523,7 +523,7 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 
 @media (max-width: 480px) {
   .grid-basic {
-    grid-template-columns: 1fr; /* 1 cột */
+    grid-template-columns: 1fr; /* 1 column */
   }
 
   .gallery {
@@ -538,14 +538,14 @@ This module helps you master modern layout techniques, responsive CSS, and seman
 
 ### Concept
 
-Layout là cách sắp xếp elements trên trang web. Các kỹ thuật layout chính:
+Layout is how to arrange elements on a web page. Main layout techniques:
 
-1. **Normal Flow**: Default layout (block và inline elements)
-2. **Float**: Đưa element sang trái/phải (legacy, ít dùng)
+1. **Normal Flow**: Default layout (block and inline elements)
+2. **Float**: Move element to left/right (legacy, rarely used)
 3. **Position**: absolute, relative, fixed, sticky
-4. **Flexbox**: Layout một chiều
-5. **Grid**: Layout hai chiều
-6. **Multi-column**: Chia nội dung thành nhiều cột
+4. **Flexbox**: One-dimensional layout
+5. **Grid**: Two-dimensional layout
+6. **Multi-column**: Divide content into multiple columns
 
 ### Examples
 
@@ -582,7 +582,7 @@ Layout là cách sắp xếp elements trên trang web. Các kỹ thuật layout 
 
       .container {
         display: flex;
-        flex: 1; /* Chiếm hết không gian còn lại */
+        flex: 1; /* Take up remaining space */
       }
 
       .sidebar-left {
@@ -806,17 +806,17 @@ Layout là cách sắp xếp elements trên trang web. Các kỹ thuật layout 
 
 ### Concept
 
-**CSS Specificity** xác định quy tắc CSS nào được ưu tiên khi nhiều quy tắc áp dụng cho cùng một element.
+**CSS Specificity** determines which CSS rule takes precedence when multiple rules apply to the same element.
 
-**Thứ tự ưu tiên (cao xuống thấp):**
+**Priority order (high to low):**
 
-1. `!important` (tránh sử dụng)
+1. `!important` (avoid using)
 2. Inline styles: `<div style="color: red">`
 3. IDs: `#header`
 4. Classes, attributes, pseudo-classes: `.button`, `[type="text"]`, `:hover`
 5. Elements, pseudo-elements: `div`, `::before`
 
-**Cách tính Specificity:**
+**How to calculate Specificity:**
 
 - Inline: 1000
 - ID: 100
@@ -961,15 +961,15 @@ body div#container .wrapper ul.nav li.item a.link {
 
 ### Concept
 
-**Responsive Design** đảm bảo website hiển thị tốt trên mọi thiết bị (desktop, tablet, mobile).
+**Responsive Design** ensures websites display well on all devices (desktop, tablet, mobile).
 
-**Kỹ thuật chính:**
+**Main techniques:**
 
 1. **Viewport**: `<meta name="viewport">`
-2. **Media Queries**: CSS rules dựa trên screen size
+2. **Media Queries**: CSS rules based on screen size
 3. **Flexible Units**: %, em, rem, vw, vh
 4. **Flexible Images**: `max-width: 100%`
-5. **Mobile-First**: Thiết kế cho mobile trước
+5. **Mobile-First**: Design for mobile first
 
 **Common Breakpoints:**
 
@@ -1278,37 +1278,37 @@ body div#container .wrapper ul.nav li.item a.link {
 
 ### Concept
 
-**Semantic HTML** sử dụng HTML tags có ý nghĩa rõ ràng về nội dung, giúp:
+**Semantic HTML** uses HTML tags with clear meaning about the content, which helps:
 
-- SEO tốt hơn
-- Accessibility (a11y) cho người khuyết tật
-- Code dễ đọc và maintain
+- Better SEO
+- Accessibility (a11y) for people with disabilities
+- Code is easier to read and maintain
 
 **Semantic Elements:**
 
-- `<header>`: Phần đầu trang/section
+- `<header>`: Top section of page/section
 - `<nav>`: Navigation links
-- `<main>`: Nội dung chính
-- `<article>`: Nội dung độc lập
-- `<section>`: Phần của document
-- `<aside>`: Nội dung phụ (sidebar)
-- `<footer>`: Phần cuối trang/section
-- `<figure>`, `<figcaption>`: Hình ảnh với caption
-- `<time>`: Thời gian
+- `<main>`: Main content
+- `<article>`: Independent content
+- `<section>`: Section of document
+- `<aside>`: Secondary content (sidebar)
+- `<footer>`: Bottom section of page/section
+- `<figure>`, `<figcaption>`: Image with caption
+- `<time>`: Time
 - `<mark>`: Highlight text
 
 ### Examples
 
 ```html
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Trang blog về lập trình web">
+  <meta name="description" content="Blog about web programming">
   <meta name="keywords" content="HTML, CSS, JavaScript, Web Development">
   <meta name="author" content="John Doe">
-  <title>Blog về Web Development</title>
+  <title>Blog about Web Development</title>
 </head>
 <body>
   <!-- ❌ NON-SEMANTIC -->
@@ -1351,23 +1351,23 @@ body div#container .wrapper ul.nav li.item a.link {
       <section>
         <h3>Introduction</h3>
         <p>
-          <mark>Semantic HTML</mark> là việc sử dụng HTML markup để
-          <strong>tăng cường ý nghĩa</strong> của thông tin trong trang web.
+          <mark>Semantic HTML</mark> is the use of HTML markup to
+          <strong>enhance the meaning</strong> of information in web pages.
         </p>
       </section>
 
       <section>
         <h3>Benefits</h3>
         <ul>
-          <li><strong>SEO</strong>: Search engines hiểu nội dung tốt hơn</li>
-          <li><strong>Accessibility</strong>: Screen readers đọc dễ hơn</li>
-          <li><strong>Maintainability</strong>: Code dễ đọc hơn</li>
+          <li><strong>SEO</strong>: Search engines understand content better</li>
+          <li><strong>Accessibility</strong>: Screen readers can read easier</li>
+          <li><strong>Maintainability</strong>: Code is easier to read</li>
         </ul>
       </section>
 
       <figure>
         <img src="semantic-html.png" alt="Semantic HTML structure diagram">
-        <figcaption>Hình 1: Cấu trúc Semantic HTML</figcaption>
+        <figcaption>Figure 1: Semantic HTML structure</figcaption>
       </figure>
 
       <section>
@@ -1394,7 +1394,7 @@ body div#container .wrapper ul.nav li.item a.link {
         </p>
       </header>
 
-      <p>CSS Grid là công cụ layout mạnh mẽ...</p>
+      <p>CSS Grid is a powerful layout tool...</p>
 
       <aside>
         <h4>Related Articles</h4>
@@ -1409,7 +1409,7 @@ body div#container .wrapper ul.nav li.item a.link {
   <aside>
     <section>
       <h3>About Me</h3>
-      <p>Tôi là một web developer với 5 năm kinh nghiệm...</p>
+      <p>I am a web developer with 5 years of experience...</p>
     </section>
 
     <section>
@@ -1491,38 +1491,38 @@ body div#container .wrapper ul.nav li.item a.link {
 
 ## Practice Exercises
 
-### Bài 1: Flexbox Navigation
+### Exercise 1: Flexbox Navigation
 
-Tạo một navigation bar responsive sử dụng Flexbox:
+Create a responsive navigation bar using Flexbox:
 
-- Desktop: Horizontal menu với logo bên trái, links ở giữa, button bên phải
+- Desktop: Horizontal menu with logo on the left, links in the center, button on the right
 - Mobile: Hamburger menu, vertical layout
 
-### Bài 2: Grid Gallery
+### Exercise 2: Grid Gallery
 
-Tạo photo gallery sử dụng CSS Grid:
+Create a photo gallery using CSS Grid:
 
 - Desktop: 4 columns
 - Tablet: 3 columns
 - Mobile: 2 columns
-- Một số ảnh chiếm 2 columns (featured)
+- Some images span 2 columns (featured)
 
-### Bài 3: Responsive Layout
+### Exercise 3: Responsive Layout
 
-Tạo blog layout responsive:
+Create a responsive blog layout:
 
-- Desktop: Sidebar trái, main content, sidebar phải
-- Tablet: Main content, sidebar dưới
-- Mobile: Stack tất cả content
+- Desktop: Left sidebar, main content, right sidebar
+- Tablet: Main content, sidebar below
+- Mobile: Stack all content
 
-### Bài 4: Semantic Article
+### Exercise 4: Semantic Article
 
-Viết một blog post sử dụng semantic HTML hoàn chỉnh:
+Write a complete blog post using semantic HTML:
 
-- Header với title và metadata
-- Sections với headings
-- Figure với images
-- Footer với tags
+- Header with title and metadata
+- Sections with headings
+- Figure with images
+- Footer with tags
 
 ---
 
